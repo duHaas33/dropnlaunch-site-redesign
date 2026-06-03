@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">Drop N Launch App Features</title>
+  <desc id="desc">App feature graphic showing metrics, swing videos, baseball and softball support, virtual stadiums, and progress tracking.</desc>
+  <defs>
+    <style>
+      .title { font: 950 60px Inter, Arial, sans-serif; fill: #121715; letter-spacing: 0; }
+      .lead { font: 850 36px Inter, Arial, sans-serif; fill: #121715; letter-spacing: 0; }
+      .label { font: 900 31px Inter, Arial, sans-serif; fill: #121715; letter-spacing: 0; }
+      .tile { fill: #050706; }
+      .green { fill: #76ce00; stroke: #76ce00; }
+      .line { fill: none; stroke: #76ce00; stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+  <rect width="1280" height="640" fill="#ffffff"/>
+  <text x="92" y="78" class="title">App Features</text>
+  <text x="14" y="148" class="lead">
+    <tspan x="14" dy="0">Train with real</tspan>
+    <tspan x="14" dy="43">feedback. Track all</tspan>
+    <tspan x="14" dy="43">of your metrics and</tspan>
+    <tspan x="14" dy="43">record all of your</tspan>
+    <tspan x="14" dy="43">swings.</tspan>
+  </text>
+
+  <g transform="translate(456 114)">
+    <rect class="tile" width="150" height="150" rx="22"/>
+    <path class="line" d="M39 112a52 52 0 1 1 73 0"/>
+    <path class="line" d="M75 78l32-33"/>
+    <circle class="green" cx="75" cy="78" r="10"/>
+    <g class="line" stroke-width="7">
+      <path d="M75 27v18"/>
+      <path d="M42 43l13 13"/>
+      <path d="M108 43l-13 13"/>
+    </g>
+    <text x="75" y="191" text-anchor="middle" class="label">
+      <tspan x="75">Exit</tspan>
+      <tspan x="75" dy="36">Velocity</tspan>
+    </text>
+  </g>
+
+  <g transform="translate(668 114)">
+    <rect class="tile" width="150" height="150" rx="22"/>
+    <path class="line" d="M28 112h94"/>
+    <path class="line" d="M28 111c36-9 68-39 94-83"/>
+    <path class="line" d="M87 29h35v35"/>
+    <text x="75" y="191" text-anchor="middle" class="label">
+      <tspan x="75">Launch</tspan>
+      <tspan x="75" dy="36">Angle</tspan>
+    </text>
+  </g>
+
+  <g transform="translate(880 114)">
+    <rect class="tile" width="150" height="150" rx="22"/>
+    <path class="line" d="M75 124c-26-34-43-63-43-83 0-24 19-43 43-43s43 19 43 43c0 20-17 49-43 83z"/>
+    <circle cx="75" cy="42" r="16" fill="none" stroke="#76ce00" stroke-width="11"/>
+    <text x="75" y="191" text-anchor="middle" class="label">Distance</text>
+  </g>
+
+  <g transform="translate(244 370)">
+    <rect class="tile" width="150" height="150" rx="22"/>
+    <path class="green" d="M61 40l23 11 31 2 12 14-27 9 18 38-13 11-27-42-25 37-18-7 23-38-22-14 9-22 13 8z"/>
+    <path class="line" stroke-width="8" d="M85 53l48 22"/>
+    <text x="75" y="191" text-anchor="middle" class="label">
+      <tspan x="75">Swing</tspan>
+      <tspan x="75" dy="36">Video</tspan>
+      <tspan x="75" dy="36">Recordings</tspan>
+    </text>
+  </g>
+
+  <g transform="translate(456 370)">
+    <rect class="tile" width="150" height="150" rx="22"/>
+    <circle cx="75" cy="75" r="50" fill="none" stroke="#76ce00" stroke-width="10"/>
+    <path class="line" stroke-width="7" d="M48 36c10 22 10 56 0 78M102 36c-10 22-10 56 0 78"/>
+    <g stroke="#76ce00" stroke-width="6" stroke-linecap="round">
+      <path d="M43 60h14M43 75h14M43 90h14M93 60h14M93 75h14M93 90h14"/>
+    </g>
+    <text x="75" y="191" text-anchor="middle" class="label">
+      <tspan x="75">Baseball</tspan>
+      <tspan x="75" dy="36">&amp;</tspan>
+      <tspan x="75" dy="36">Softball</tspan>
+    </text>
+  </g>
+
+  <g transform="translate(668 370)">
+    <rect class="tile" width="150" height="150" rx="22"/>
+    <path class="line" d="M30 96c27-28 63-42 90 0"/>
+    <path class="line" stroke-width="8" d="M43 67h65M50 52h51M58 38h35"/>
+    <path class="line" stroke-width="7" d="M31 96l44 31 45-31"/>
+    <circle cx="75" cy="89" r="8" fill="#76ce00"/>
+    <text x="75" y="191" text-anchor="middle" class="label">
+      <tspan x="75">Virtual</tspan>
+      <tspan x="75" dy="36">Stadiums</tspan>
+    </text>
+  </g>
+
+  <g transform="translate(880 370)">
+    <rect class="tile" width="150" height="150" rx="22"/>
+    <path class="line" d="M28 25v99h100"/>
+    <path class="line" d="M36 105l30-31 28 15 35-50"/>
+    <text x="75" y="191" text-anchor="middle" class="label">
+      <tspan x="75">Track Data</tspan>
+      <tspan x="75" dy="36">Over Time</tspan>
+    </text>
+  </g>
+</svg>

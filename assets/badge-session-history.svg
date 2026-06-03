@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-labelledby="title desc">
+  <title id="title">Session History badge</title>
+  <desc id="desc">A Drop N Launch badge showing progress over a practice session.</desc>
+  <rect width="320" height="180" rx="8" fill="#060908"/>
+  <rect x="18" y="22" width="284" height="136" rx="6" fill="#ffffff"/>
+  <g stroke="#d9dfdb" stroke-width="1">
+    <path d="M42 130h236"/>
+    <path d="M42 98h236"/>
+    <path d="M42 66h236"/>
+  </g>
+  <path d="M44 122l40-18 38 8 42-42 38 20 42-38 34 8" fill="none" stroke="#76ce00" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#101512">
+    <circle cx="44" cy="122" r="5"/>
+    <circle cx="164" cy="70" r="5"/>
+    <circle cx="244" cy="52" r="5"/>
+  </g>
+  <text x="34" y="46" fill="#101512" font-family="Arial, sans-serif" font-size="18" font-weight="900">SESSION HISTORY</text>
+  <text x="34" y="150" fill="#5c665f" font-family="Arial, sans-serif" font-size="14" font-weight="800">Track trends from cage to cage.</text>
+</svg>
