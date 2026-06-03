@@ -651,12 +651,17 @@ button {
   position: relative;
   z-index: 1;
   min-height: 0;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.48);
   border-radius: 8px;
   background: #0b100d;
-  box-shadow: none;
+  box-shadow:
+    0 48px 110px rgba(0, 0, 0, 0.82),
+    0 18px 46px rgba(255, 255, 255, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 1px 0 rgba(255, 255, 255, 0.48) inset;
   overflow: hidden;
-  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+  clip-path: none;
+  transform: translateY(-18px);
 }
 
 .feature-shot::after {
@@ -686,7 +691,7 @@ button {
   object-position: center;
   filter: saturate(1.06) contrast(1.04);
   background: #050706;
-  transform: scale(1.06);
+  transform: none;
   transform-origin: center center;
 }
 
