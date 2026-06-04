@@ -108,13 +108,24 @@ document.querySelectorAll("[data-setup]").forEach((button) => {
 });
 
 const performanceCards = document.querySelectorAll(".performance-card");
+const performanceMediaQuery = window.matchMedia("(max-width: 680px)");
 
 function syncPerformanceCards() {
-  const isMobile = window.matchMedia("(max-width: 680px)").matches;
+  const isMobile = performanceMediaQuery.matches;
   performanceCards.forEach((card) => {
     card.open = !isMobile;
   });
 }
+
+performanceCards.forEach((card) => {
+  card.addEventListener("toggle", () => {
+    if (!performanceMediaQuery.matches || !card.open) return;
+
+    performanceCards.forEach((otherCard) => {
+      if (otherCard !== card) otherCard.open = false;
+    });
+  });
+});
 
 window.addEventListener("resize", syncPerformanceCards, { passive: true });
 syncPerformanceCards();

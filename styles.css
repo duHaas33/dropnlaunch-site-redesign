@@ -1907,25 +1907,42 @@ button {
 
   .performance-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
   }
 
   .performance-card {
     min-height: 0;
     display: block;
-    padding: 16px;
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  .performance-card[open] {
+    grid-column: 1 / -1;
+    padding: 12px;
   }
 
   .performance-card summary {
-    grid-template-columns: 1fr auto;
-    gap: 10px;
+    grid-template-columns: 1fr;
+    gap: 0;
+    position: relative;
+  }
+
+  .performance-card summary::after {
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    width: 18px;
+    height: 18px;
+    background: rgba(5, 7, 6, 0.72);
   }
 
   .performance-card p {
     font-size: 0.9rem;
     line-height: 1.42;
-    margin-top: 8px;
+    margin-top: 10px;
+    text-align: center;
   }
 
   .performance-card p {
@@ -1937,6 +1954,12 @@ button {
   }
 
   .performance-icon {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .performance-card[open] .performance-icon {
     width: 96px;
     height: 96px;
   }
