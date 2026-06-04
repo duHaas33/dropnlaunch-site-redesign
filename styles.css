@@ -1948,9 +1948,9 @@ button {
   .hero-title-logo {
     position: absolute;
     z-index: 1;
-    top: 48px;
-    left: -34px;
-    width: clamp(128px, 42vw, 190px);
+    top: 78px;
+    left: 10px;
+    width: clamp(96px, 30vw, 132px);
     margin: 0;
     font-size: 0;
     line-height: 1;
@@ -2331,10 +2331,6 @@ button {
 @media (max-width: 420px) {
   .hero h1 {
     font-size: 2.38rem;
-  }
-
-  .hero-title-logo {
-    width: clamp(118px, 44vw, 168px);
   }
 
   .hero-copy,
