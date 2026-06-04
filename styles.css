@@ -472,8 +472,8 @@ button {
 }
 
 .performance-card {
-  min-height: 190px;
-  padding: 22px 22px 20px;
+  min-height: 220px;
+  padding: 18px 20px 20px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.03);
@@ -485,8 +485,8 @@ button {
 .performance-card summary {
   margin: 0;
   display: grid;
-  grid-template-columns: 46px 1fr;
-  gap: 12px;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
   align-items: center;
   cursor: pointer;
   list-style: none;
@@ -515,16 +515,17 @@ button {
 }
 
 .performance-icon {
-  width: 46px;
-  height: 46px;
-  display: grid;
-  place-items: center;
+  width: 132px;
+  height: 132px;
+  justify-self: center;
   border-radius: 8px;
-  background: linear-gradient(135deg, rgba(118, 206, 0, 0.98), #6ed700);
-  color: #07100d;
-  font-size: 0.9rem;
-  font-weight: 950;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  object-fit: contain;
+  object-position: center;
+  border: 0;
+  box-shadow: none;
+  image-rendering: auto;
+  background: transparent;
+  padding: 0;
 }
 
 .performance-card h3 {
@@ -650,6 +651,213 @@ button {
   backdrop-filter: blur(10px);
 }
 
+.get-started-page-hero {
+  background:
+    linear-gradient(90deg, rgba(5, 7, 6, 0.9), rgba(5, 7, 6, 0.58)),
+    url("assets/website-iphone-inset.png") center / cover no-repeat;
+  color: var(--white);
+  text-align: left;
+  min-height: clamp(420px, 48vw, 560px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 120px;
+}
+
+.get-started-page-copy {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.get-started-page-hero h1 {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  line-height: 1.06;
+  text-transform: uppercase;
+}
+
+.get-started-page-hero p {
+  margin: 0;
+  max-width: 760px;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.6;
+}
+
+.get-started-actions {
+  margin-top: 26px;
+}
+
+.get-started-content {
+  background: #050706;
+  color: var(--white);
+}
+
+.get-started-heading {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto 24px;
+  text-align: center;
+}
+
+.get-started-heading h2 {
+  margin: 0;
+  color: currentColor;
+  font-size: 2.7rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.get-started-heading p:last-child {
+  max-width: 620px;
+  margin: 12px auto 0;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.55;
+}
+
+.need-grid,
+.setup-guide-grid {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  display: grid;
+  gap: 14px;
+}
+
+.need-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.need-grid article {
+  min-height: 230px;
+  border: 1px solid var(--line-dark);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 20px;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.28);
+}
+
+.need-number {
+  display: inline-block;
+  margin-bottom: 46px;
+  color: var(--green);
+  font-size: 0.84rem;
+  font-weight: 950;
+}
+
+.need-grid h3,
+.setup-guide-grid span {
+  margin: 0;
+  color: var(--white);
+  font-size: 1.08rem;
+  text-transform: uppercase;
+}
+
+.need-grid p {
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.52;
+}
+
+.need-grid a {
+  display: inline-flex;
+  margin-top: 14px;
+  color: var(--green-soft);
+  font-weight: 900;
+}
+
+.setup-video-section {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(360px, 1fr);
+  gap: clamp(24px, 5vw, 64px);
+  align-items: center;
+  background: var(--paper);
+}
+
+.setup-video-copy {
+  width: min(520px, 100%);
+  margin-left: max(16px, calc((100vw - 1180px) / 2));
+}
+
+.setup-video-copy h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 2.7rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.setup-video-copy p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.setup-video-card {
+  margin-right: max(16px, calc((100vw - 1180px) / 2));
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.setup-video-card iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  border: 0;
+}
+
+.setup-guide-section {
+  background: #07100d;
+  color: var(--white);
+}
+
+.setup-guide-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.setup-guide-card {
+  position: relative;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(10, 20, 16, 0.7);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.34);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 100%;
+}
+
+.setup-guide-card h3 {
+  margin: 0;
+  color: var(--white);
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.setup-guide-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.setup-guide-video {
+  position: relative;
+  margin-top: 4px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+}
+
+.setup-guide-video iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  border: 0;
+}
+
 .app-gallery-section {
   padding: 62px 0 70px;
   background:
@@ -708,7 +916,7 @@ button {
   display: flex;
   width: max-content;
   gap: 18px;
-  animation: appGalleryScroll 38s linear infinite;
+  animation: appGalleryScroll 56s linear infinite;
 }
 
 .app-gallery-rail:hover .app-gallery-track {
@@ -716,8 +924,8 @@ button {
 }
 
 .app-gallery-track img {
-  width: clamp(270px, 34vw, 520px);
-  height: clamp(260px, 34vw, 520px);
+  width: clamp(300px, 36vw, 580px);
+  height: clamp(280px, 36vw, 560px);
   flex: 0 0 auto;
   object-fit: contain;
   scroll-snap-align: center;
@@ -1386,6 +1594,39 @@ button {
   color: var(--white);
 }
 
+.policy-page {
+  background: var(--black);
+  color: var(--white);
+}
+
+.policy-page .section {
+  background: var(--black);
+}
+
+.policy-page .site-header {
+  background: rgba(7, 16, 13, 0.95);
+}
+
+.policy-page .policy-content h1,
+.policy-page .policy-content h2,
+.policy-page .policy-content h3,
+.policy-page .policy-content p,
+.policy-page .policy-content li,
+.policy-page .footer-links,
+.policy-page .footer-bottom {
+  color: var(--white);
+}
+
+.policy-page .policy-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.policy-page .policy-content p,
+.policy-page .policy-content li {
+  color: rgba(255, 255, 255, 0.82);
+}
+
 .footer-main {
   display: flex;
   flex-direction: column;
@@ -1677,8 +1918,8 @@ button {
   }
 
   .performance-card summary {
-    grid-template-columns: 42px 1fr;
-    gap: 10px 12px;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
   }
 
   .performance-card p {
@@ -1696,9 +1937,8 @@ button {
   }
 
   .performance-icon {
-    width: 42px;
-    height: 42px;
-    grid-row: span 2;
+    width: 96px;
+    height: 96px;
   }
 
   .performance-card h3 {
@@ -1744,6 +1984,64 @@ button {
     max-width: 330px;
   }
 
+  .get-started-page-hero {
+    min-height: 520px;
+    padding-top: 116px;
+    background-position: center center;
+  }
+
+  .get-started-page-copy,
+  .get-started-heading,
+  .need-grid,
+  .setup-guide-grid {
+    width: calc(100vw - 28px);
+  }
+
+  .get-started-page-hero h1,
+  .get-started-heading h2,
+  .setup-video-copy h2 {
+    font-size: 1.9rem;
+  }
+
+  .get-started-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .get-started-actions img {
+    width: 100%;
+  }
+
+  .need-grid,
+  .setup-guide-grid,
+  .setup-video-section {
+    grid-template-columns: 1fr;
+  }
+
+  .need-grid article {
+    min-height: 0;
+    padding: 16px;
+  }
+
+  .need-number {
+    margin-bottom: 18px;
+  }
+
+  .setup-video-section {
+    gap: 22px;
+  }
+
+  .setup-video-copy,
+  .setup-video-card {
+    width: calc(100vw - 28px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .setup-guide-grid article {
+    min-height: 0;
+  }
+
   .app-gallery-section {
     padding: 46px 0 54px;
   }
@@ -1763,12 +2061,12 @@ button {
 
   .app-gallery-track {
     gap: 12px;
-    animation-duration: 30s;
+    animation-duration: 42s;
   }
 
   .app-gallery-track img {
-    width: 270px;
-    height: 320px;
+    width: 300px;
+    height: 350px;
   }
 
   .feature-lab-visual {
