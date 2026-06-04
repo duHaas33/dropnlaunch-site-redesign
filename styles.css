@@ -562,6 +562,146 @@ button {
   margin: 0;
 }
 
+.get-started-section {
+  position: relative;
+  min-height: clamp(360px, 46vw, 540px);
+  display: grid;
+  align-items: center;
+  padding: 76px 0;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(5, 7, 6, 0.88) 0%, rgba(5, 7, 6, 0.6) 44%, rgba(5, 7, 6, 0.32) 100%),
+    url("assets/get-started-garage.png") center / cover no-repeat;
+  color: var(--white);
+}
+
+.get-started-glass {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 7, 6, 0.3);
+  backdrop-filter: blur(1.2px);
+  pointer-events: none;
+}
+
+.get-started-inner {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  max-width: 620px;
+}
+
+.get-started-section h2 {
+  margin: 0;
+  color: var(--white);
+  font-size: 3rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.get-started-section p:not(.section-kicker) {
+  max-width: 540px;
+  margin: 16px 0 24px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.04rem;
+  line-height: 1.58;
+}
+
+.get-started-section .button {
+  border-color: rgba(255, 255, 255, 0.34);
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.36);
+  backdrop-filter: blur(10px);
+}
+
+.app-gallery-section {
+  padding: 62px 0 70px;
+  background:
+    linear-gradient(180deg, #050706 0%, #07100d 100%);
+  color: var(--white);
+  overflow: hidden;
+}
+
+.app-gallery-heading {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto 28px;
+  text-align: center;
+}
+
+.app-gallery-heading h2 {
+  margin: 0;
+  color: var(--white);
+  font-size: 2.4rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.app-gallery-heading p:last-child {
+  max-width: 650px;
+  margin: 12px auto 0;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.55;
+}
+
+.app-gallery-rail {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.32) transparent;
+}
+
+.app-gallery-rail::-webkit-scrollbar {
+  height: 8px;
+}
+
+.app-gallery-rail::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.app-gallery-rail::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.app-gallery-track {
+  display: flex;
+  width: max-content;
+  gap: 18px;
+  animation: appGalleryScroll 38s linear infinite;
+}
+
+.app-gallery-rail:hover .app-gallery-track {
+  animation-play-state: paused;
+}
+
+.app-gallery-track img {
+  width: clamp(270px, 34vw, 520px);
+  height: clamp(260px, 34vw, 520px);
+  flex: 0 0 auto;
+  object-fit: contain;
+  scroll-snap-align: center;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: #0b100d;
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.42);
+}
+
+@keyframes appGalleryScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 9px));
+  }
+}
+
 .feature-lab-copy-inner {
   max-width: 540px;
 }
@@ -1537,6 +1677,51 @@ button {
   .intro-section {
     grid-template-columns: 1fr;
     padding: 28px 14px;
+  }
+
+  .get-started-section {
+    min-height: 420px;
+    padding: 64px 0;
+    background-position: center center;
+  }
+
+  .get-started-inner {
+    width: calc(100vw - 28px);
+  }
+
+  .get-started-section h2 {
+    font-size: 2.15rem;
+  }
+
+  .get-started-section p:not(.section-kicker) {
+    max-width: 330px;
+  }
+
+  .app-gallery-section {
+    padding: 46px 0 54px;
+  }
+
+  .app-gallery-heading {
+    width: calc(100vw - 28px);
+    margin-bottom: 22px;
+  }
+
+  .app-gallery-heading h2 {
+    font-size: 1.72rem;
+  }
+
+  .app-gallery-heading p:last-child {
+    font-size: 0.92rem;
+  }
+
+  .app-gallery-track {
+    gap: 12px;
+    animation-duration: 30s;
+  }
+
+  .app-gallery-track img {
+    width: 270px;
+    height: 320px;
   }
 
   .feature-lab-visual {
