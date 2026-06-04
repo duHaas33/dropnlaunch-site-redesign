@@ -106,3 +106,15 @@ function updateSetup(key) {
 document.querySelectorAll("[data-setup]").forEach((button) => {
   button.addEventListener("click", () => updateSetup(button.dataset.setup));
 });
+
+const performanceCards = document.querySelectorAll(".performance-card");
+
+function syncPerformanceCards() {
+  const isMobile = window.matchMedia("(max-width: 680px)").matches;
+  performanceCards.forEach((card) => {
+    card.open = !isMobile;
+  });
+}
+
+window.addEventListener("resize", syncPerformanceCards, { passive: true });
+syncPerformanceCards();
