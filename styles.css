@@ -1874,15 +1874,23 @@ button {
   }
 
   .hero {
-    min-height: clamp(310px, 42svh, 400px);
-    padding: 0;
+    position: relative;
+    min-height: 0;
+    display: block;
+    padding: calc(72px + ((100vw * 555) / 1200)) 0 0;
     background-color: #050706;
-    background-position: center, center, center 72px;
-    background-size: cover, cover, 100% auto;
+    background-image:
+      linear-gradient(180deg, rgba(2, 5, 4, 0.2), rgba(2, 5, 4, 0)),
+      url("assets/cage-setup.jpeg");
+    background-position: top center, center 72px;
+    background-repeat: no-repeat;
+    background-size: 100% calc(72px + ((100vw * 555) / 1200)), 100% auto;
+    overflow: hidden;
   }
 
   .hero-inner {
-    padding: 68px 0 14px;
+    min-height: 0;
+    padding: 0 0 20px;
   }
 
   .hero-inner,
@@ -1893,13 +1901,22 @@ button {
     margin: 0 auto;
   }
 
+  .hero-shell {
+    min-height: 0;
+    position: static;
+  }
+
   .hero h1 {
     font-size: 2.62rem;
   }
 
   .hero-copy {
+    width: 100%;
     font-size: 1.02rem;
     max-width: 360px;
+    margin: 0;
+    padding: 6px 0 0;
+    color: rgba(255, 255, 255, 0.86);
   }
 
   .hero-actions,
@@ -1914,8 +1931,10 @@ button {
   }
 
   .hero-store-links {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 6px;
   }
 
   .hero-store-links img {
@@ -1923,7 +1942,18 @@ button {
   }
 
   .hero-title-logo img {
-    width: min(132px, 100%);
+    width: 100%;
+  }
+
+  .hero-title-logo {
+    position: absolute;
+    z-index: 1;
+    top: 48px;
+    left: -34px;
+    width: clamp(128px, 42vw, 190px);
+    margin: 0;
+    font-size: 0;
+    line-height: 1;
   }
 
   .hero-facts {
@@ -2303,8 +2333,8 @@ button {
     font-size: 2.38rem;
   }
 
-  .hero-title-logo img {
-    width: min(124px, 100%);
+  .hero-title-logo {
+    width: clamp(118px, 44vw, 168px);
   }
 
   .hero-copy,
