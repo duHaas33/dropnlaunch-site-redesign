@@ -1911,8 +1911,8 @@ button {
 
 @media (max-width: 680px) {
   .site-header {
-    top: 10px;
-    width: calc(100% - 20px);
+    top: 0;
+    width: 100%;
   }
 
   .brand-name {
