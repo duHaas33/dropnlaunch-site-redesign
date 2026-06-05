@@ -130,162 +130,70 @@ performanceCards.forEach((card) => {
 window.addEventListener("resize", syncPerformanceCards, { passive: true });
 syncPerformanceCards();
 
-const galleryRail = document.querySelector(".app-gallery-rail");
-const galleryImages = Array.from(document.querySelectorAll(".app-gallery-track img"));
+const galleryCarousel = document.querySelector(".app-gallery-carousel");
+const galleryTrack = document.querySelector(".app-gallery-track");
+const gallerySlides = Array.from(document.querySelectorAll(".app-gallery-slide"));
+const galleryCaption = document.querySelector(".app-gallery-caption");
+const galleryPrevious = document.querySelector(".app-gallery-arrow-prev");
+const galleryNext = document.querySelector(".app-gallery-arrow-next");
+let galleryIndex = 0;
 let galleryTimer;
-let galleryResumeTimer;
-let gallerySnapTimer;
-let galleryDragStartX = 0;
-let galleryDragStartScroll = 0;
-let isGalleryDragging = false;
 
-function updateGalleryActiveImage() {
-  if (!galleryRail || galleryImages.length === 0) return;
+function updateGallery() {
+  if (!galleryTrack || gallerySlides.length === 0) return;
 
-  const railCenter = galleryRail.getBoundingClientRect().left + galleryRail.clientWidth / 2;
-  let activeImage = galleryImages[0];
-  let shortestDistance = Number.POSITIVE_INFINITY;
-
-  galleryImages.forEach((image) => {
-    const imageRect = image.getBoundingClientRect();
-    const imageCenter = imageRect.left + imageRect.width / 2;
-    const distance = Math.abs(railCenter - imageCenter);
-
-    if (distance < shortestDistance) {
-      shortestDistance = distance;
-      activeImage = image;
-    }
+  const galleryGap = Number(window.getComputedStyle(galleryTrack).columnGap.replace("px", "")) || 0;
+  galleryTrack.style.transform = `translateX(calc(-${galleryIndex * 100}% - ${galleryIndex * galleryGap}px))`;
+  gallerySlides.forEach((slide, index) => {
+    const isActive = index === galleryIndex;
+    slide.classList.toggle("is-active", isActive);
+    slide.setAttribute("aria-hidden", String(!isActive));
   });
 
-  galleryImages.forEach((image) => image.classList.toggle("is-active", image === activeImage));
-}
-
-function getClosestGalleryImage() {
-  if (!galleryRail || galleryImages.length === 0) return null;
-
-  const railCenter = galleryRail.getBoundingClientRect().left + galleryRail.clientWidth / 2;
-  let closestImage = galleryImages[0];
-  let shortestDistance = Number.POSITIVE_INFINITY;
-
-  galleryImages.forEach((image) => {
-    const imageRect = image.getBoundingClientRect();
-    const imageCenter = imageRect.left + imageRect.width / 2;
-    const distance = Math.abs(railCenter - imageCenter);
-
-    if (distance < shortestDistance) {
-      shortestDistance = distance;
-      closestImage = image;
-    }
-  });
-
-  return closestImage;
-}
-
-function centerGalleryImage(image, behavior = "smooth") {
-  if (!galleryRail || !image) return;
-
-  const targetLeft = image.offsetLeft - (galleryRail.clientWidth - image.clientWidth) / 2;
-  galleryRail.scrollTo({ left: targetLeft, behavior });
-}
-
-function getGalleryStep() {
-  if (galleryImages.length < 2) return 0;
-  return galleryImages[1].offsetLeft - galleryImages[0].offsetLeft;
-}
-
-function wrapGalleryScroll() {
-  if (!galleryRail || galleryImages.length < 3) return;
-
-  const uniqueCount = Math.floor(galleryImages.length / 3);
-  const loopWidth = getGalleryStep() * uniqueCount;
-
-  if (!loopWidth) return;
-
-  if (galleryRail.scrollLeft < loopWidth * 0.5) {
-    galleryRail.scrollLeft += loopWidth;
-  } else if (galleryRail.scrollLeft > loopWidth * 1.5) {
-    galleryRail.scrollLeft -= loopWidth;
+  if (galleryCaption) {
+    galleryCaption.textContent = gallerySlides[galleryIndex].dataset.caption || "";
   }
 }
 
-function advanceGallery() {
-  const step = getGalleryStep();
-  if (!galleryRail || !step) return;
-
-  galleryRail.scrollBy({ left: step, behavior: "smooth" });
+function showGallerySlide(nextIndex) {
+  if (gallerySlides.length === 0) return;
+  galleryIndex = (nextIndex + gallerySlides.length) % gallerySlides.length;
+  updateGallery();
 }
 
 function startGalleryAutoScroll() {
   window.clearInterval(galleryTimer);
-  galleryTimer = window.setInterval(advanceGallery, 3200);
+  galleryTimer = window.setInterval(() => showGallerySlide(galleryIndex + 1), 4200);
 }
 
 function pauseGalleryAutoScroll() {
   window.clearInterval(galleryTimer);
-  window.clearTimeout(galleryResumeTimer);
-  galleryResumeTimer = window.setTimeout(startGalleryAutoScroll, 4200);
+  window.setTimeout(startGalleryAutoScroll, 5200);
 }
 
-if (galleryRail && galleryImages.length > 0) {
-  const uniqueCount = Math.floor(galleryImages.length / 3);
-  const initializeGallery = () => {
-    galleryRail.scrollLeft = getGalleryStep() * uniqueCount;
-    updateGalleryActiveImage();
-    startGalleryAutoScroll();
-  };
-
-  galleryRail.addEventListener("scroll", () => {
-    window.requestAnimationFrame(() => {
-      wrapGalleryScroll();
-      updateGalleryActiveImage();
-    });
-
-    if (!isGalleryDragging) {
-      window.clearTimeout(gallerySnapTimer);
-      gallerySnapTimer = window.setTimeout(() => {
-        centerGalleryImage(getClosestGalleryImage());
-      }, 220);
-    }
-  }, { passive: true });
-
-  ["pointerdown", "wheel", "touchstart"].forEach((eventName) => {
-    galleryRail.addEventListener(eventName, pauseGalleryAutoScroll, { passive: true });
-  });
-
-  galleryRail.addEventListener("pointerdown", (event) => {
-    if (event.pointerType === "mouse" && event.button !== 0) return;
-
-    isGalleryDragging = true;
-    galleryDragStartX = event.clientX;
-    galleryDragStartScroll = galleryRail.scrollLeft;
-    galleryRail.classList.add("is-dragging");
-    galleryRail.setPointerCapture(event.pointerId);
+if (galleryCarousel && gallerySlides.length > 0) {
+  galleryPrevious?.addEventListener("click", () => {
     pauseGalleryAutoScroll();
+    showGallerySlide(galleryIndex - 1);
   });
 
-  galleryRail.addEventListener("pointermove", (event) => {
-    if (!isGalleryDragging) return;
-
-    event.preventDefault();
-    galleryRail.scrollLeft = galleryDragStartScroll - (event.clientX - galleryDragStartX);
-  });
-
-  function stopGalleryDrag(event) {
-    if (!isGalleryDragging) return;
-
-    isGalleryDragging = false;
-    galleryRail.classList.remove("is-dragging");
-    if (galleryRail.hasPointerCapture(event.pointerId)) {
-      galleryRail.releasePointerCapture(event.pointerId);
-    }
-    centerGalleryImage(getClosestGalleryImage());
+  galleryNext?.addEventListener("click", () => {
     pauseGalleryAutoScroll();
-  }
+    showGallerySlide(galleryIndex + 1);
+  });
 
-  galleryRail.addEventListener("pointerup", stopGalleryDrag);
-  galleryRail.addEventListener("pointercancel", stopGalleryDrag);
-  galleryRail.addEventListener("pointerleave", stopGalleryDrag);
+  galleryCarousel.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      pauseGalleryAutoScroll();
+      showGallerySlide(galleryIndex - 1);
+    } else if (event.key === "ArrowRight") {
+      pauseGalleryAutoScroll();
+      showGallerySlide(galleryIndex + 1);
+    }
+  });
 
-  window.addEventListener("resize", initializeGallery, { passive: true });
-  window.setTimeout(initializeGallery, 120);
+  galleryCarousel.addEventListener("pointerenter", () => window.clearInterval(galleryTimer));
+  galleryCarousel.addEventListener("pointerleave", startGalleryAutoScroll);
+  updateGallery();
+  startGalleryAutoScroll();
 }
