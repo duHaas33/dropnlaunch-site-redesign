@@ -1,0 +1,10 @@
+.DS_Store
+**/.DS_Store
+
+# Local preview captures
+preview-*.png
+
+# Logs/temp output
+*.log
+tmp/
+temp/
